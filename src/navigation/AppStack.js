@@ -2,7 +2,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {
   Login,
   Members,
-  MemberTransaction
+  MemberTransaction,
+  OtherPayment,
+  SchemePayment
 } from '../screens';
 import navigationStrings from '../constants/navigationStrings';
 // import { AuthContext } from '../context/AuthContext';
@@ -21,6 +23,11 @@ function AppStack() {
       {/* Staff Screens*/}
       <Stack.Screen name={navigationStrings.MEMBERS} component={Members} />
       <Stack.Screen name={navigationStrings.MEMBER_TRANSACTION} component={MemberTransaction} />
+      <Stack.Screen name={navigationStrings.SCHEME_PAYMENT} component={SchemePayment} />
+      <Stack.Screen name={navigationStrings.OTHER_PAYMENT} component={OtherPayment} />
+      <Stack.Screen name={navigationStrings.FIXED_HISTORY} component={FixedHistory} />
+      <Stack.Screen name={navigationStrings.UNFIXED_HISTORY} component={UnfixedHistory} />
+      <Stack.Screen name={navigationStrings.OTHER_HISTORY} component={OtherHistory} />
     </Stack.Navigator>
   );
 }

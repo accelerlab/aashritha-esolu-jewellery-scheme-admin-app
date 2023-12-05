@@ -5,5 +5,8 @@ export default StyleSheet.create({
         flex: 1,
        // backgroundColor: colors.white
     },
-   
+    rowContainer: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
 })
