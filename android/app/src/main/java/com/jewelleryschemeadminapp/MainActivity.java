@@ -1,4 +1,4 @@
-package com.jewelleryschemeapp;
+package com.jewelleryschemeadminapp;
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
@@ -13,7 +13,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "JewellerySchemeApp";
+    return "JewellerySchemeAdminApp";
   }
    @Override
   protected void onCreate(Bundle savedInstanceState) {

@@ -1,4 +1,4 @@
-package com.jewelleryschemeapp;
+package com.jewelleryschemeadminapp;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

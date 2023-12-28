@@ -9,4 +9,5 @@ export default {
     FIXED_HISTORY : 'FixedHistory',
     UNFIXED_HISTORY : 'UnfixedHistory',
     OTHER_HISTORY : 'OtherHistory',
+    GROUPS : 'Groups',
 }

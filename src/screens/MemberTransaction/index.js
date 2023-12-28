@@ -10,6 +10,7 @@ import fontFamily from '../../styles/fontFamily'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import navigationStrings from '../../constants/navigationStrings'
 
+
 const MemberTransaction = ({ route, navigation }) => {
   const { data } = route.params;
 
@@ -87,7 +88,7 @@ const MemberTransaction = ({ route, navigation }) => {
 
     return unsubscribe;
   }, [navigation]);
-  const viewReciept = 'View Reciept >'
+  const viewReciept = 'Generate Reciept >'
   const renderItem = ({ item, index }) => {
     return (
       <View style={{ ...styles.itemContainer, marginBottom: index == paymentData.length - 1 ? 90 : 20 }}>
@@ -96,7 +97,7 @@ const MemberTransaction = ({ route, navigation }) => {
           <Text style={styles.heading}>{item.rcptDate}</Text>
         </View>
         <View style={[styles.detailContainer, styles.rowContainer]}>
-          <Text style={styles.heading}>Instal No</Text>
+          <Text style={styles.heading}>Instal No</Text> 
           <Text style={styles.heading}>{item.instlNo}</Text>
         </View>
         <View style={{ ...styles.detailContainer, paddingTop: 0 }}>
@@ -105,7 +106,6 @@ const MemberTransaction = ({ route, navigation }) => {
             <Text style={styles.heading}>Amount</Text>
             <Text style={styles.heading}>Rate</Text>
           </View>
-
           <View style={styles.rowContainer}>
             <Text numberOfLines={1} style={styles.infoText}>{item.amount}</Text>
             <Text style={styles.infoText}>{item.rate}</Text>
@@ -130,7 +130,7 @@ const MemberTransaction = ({ route, navigation }) => {
   }
   return (
     <View style={styles.container}>
-      <Header title={"MY TRANSACTIONS"} showBackButton={true} />
+      <Header title={"MEMBER TRANSACTIONS"} showBackButton={true} />
       <View style={styles.profileContainer}>
         <View style={{ marginLeft: 10, flex: 1 }}>
           <Text style={{ ...styles.heading, textTransform: 'capitalize' }}>{data.name}</Text>
@@ -140,10 +140,10 @@ const MemberTransaction = ({ route, navigation }) => {
           <Text style={{ ...styles.infoText }}>Address : {data.address} </Text>
         </View>
       </View>
-      <View style={styles.filterContainer}>
+      {/* <View style={styles.filterContainer}>
         <Button title={'Make payment'} onPress={() => onSelectPayment()} />
         <Button title={'Transaction History'} onPress={() => onSelectHistory()} />
-      </View>
+      </View> */}
       <FlatList data={paymentData} renderItem={renderItem} />
       <Modal
         transparent={true}
@@ -227,11 +227,11 @@ const MemberTransaction = ({ route, navigation }) => {
               optionStyle={{ borderBottomColor: '#fff' }}
               cancelContainerStyle={{ backgroundColor: '#fff' }}
               cancelTextStyle={{ color: 'black', fontFamily: fontFamily.regular, }}
-              cancelText="Cancel"
+              cancelText="Cancel"k
             >
               <Input
                 placeHolder="Select Payment Type"
-                value={selectedHistoryType.label}
+                value={selectedHistoryType.label}  
                 editable={false}
                 inputStyle={{ marginTop: 10 }}
                 rightIcon={'chevron-down'}

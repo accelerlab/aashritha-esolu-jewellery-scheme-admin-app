@@ -33,7 +33,7 @@ const Login = ({ navigation }) => {
         </View>
         <Button
           title={'Continue'}
-          onPress={() => navigation.navigate(navigationStrings.MEMBERS)}
+          onPress={() => navigation.navigate(navigationStrings.GROUPS)}
         />
       </View>
     </View>

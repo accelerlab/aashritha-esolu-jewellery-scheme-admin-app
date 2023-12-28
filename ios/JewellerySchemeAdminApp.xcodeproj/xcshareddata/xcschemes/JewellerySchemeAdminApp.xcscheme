@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "JewellerySchemeApp.app"
-               BlueprintName = "JewellerySchemeApp"
-               ReferencedContainer = "container:JewellerySchemeApp.xcodeproj">
+               BuildableName = "JewellerySchemeAdminApp.app"
+               BlueprintName = "JewellerySchemeAdminApp"
+               ReferencedContainer = "container:JewellerySchemeAdminApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "JewellerySchemeAppTests.xctest"
-               BlueprintName = "JewellerySchemeAppTests"
-               ReferencedContainer = "container:JewellerySchemeApp.xcodeproj">
+               BuildableName = "JewellerySchemeAdminAppTests.xctest"
+               BlueprintName = "JewellerySchemeAdminAppTests"
+               ReferencedContainer = "container:JewellerySchemeAdminApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "JewellerySchemeApp.app"
-            BlueprintName = "JewellerySchemeApp"
-            ReferencedContainer = "container:JewellerySchemeApp.xcodeproj">
+            BuildableName = "JewellerySchemeAdminApp.app"
+            BlueprintName = "JewellerySchemeAdminApp"
+            ReferencedContainer = "container:JewellerySchemeAdminApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "JewellerySchemeApp.app"
-            BlueprintName = "JewellerySchemeApp"
-            ReferencedContainer = "container:JewellerySchemeApp.xcodeproj">
+            BuildableName = "JewellerySchemeAdminApp.app"
+            BlueprintName = "JewellerySchemeAdminApp"
+            ReferencedContainer = "container:JewellerySchemeAdminApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

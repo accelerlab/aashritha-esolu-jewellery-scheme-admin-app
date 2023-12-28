@@ -9,6 +9,7 @@ export { default as OtherPayment } from "./OtherPayment";
 export { default as FixedHistory } from "./FixedHistory";
 export { default as UnfixedHistory } from "./UnfixedHistory";
 export { default as OtherHistory } from "./OtherHistory";
+export { default as Groups } from "./Groups";
 
 
 

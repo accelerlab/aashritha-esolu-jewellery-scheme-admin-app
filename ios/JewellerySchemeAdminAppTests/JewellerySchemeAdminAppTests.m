@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface JewellerySchemeAppTests : XCTestCase
+@interface JewellerySchemeAdminAppTests : XCTestCase
 
 @end
 
-@implementation JewellerySchemeAppTests
+@implementation JewellerySchemeAdminAppTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

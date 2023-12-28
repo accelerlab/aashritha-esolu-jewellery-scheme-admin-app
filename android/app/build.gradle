@@ -73,9 +73,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.jewelleryschemeapp"
+    namespace "com.jewelleryschemeadminapp"
     defaultConfig {
-        applicationId "com.jewelleryschemeapp"
+        applicationId "com.jewelleryschemeadminapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

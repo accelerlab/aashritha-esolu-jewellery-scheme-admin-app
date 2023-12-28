@@ -5,7 +5,7 @@ import AuthStack from './AuthStack';
 import { AuthContext } from '../context/AuthContext';
 import AppStack from './AppStack';
 import colors from '../constants/colors';
-import { Login, MemberTransaction, Members, SchemePayment, OtherPayment, FixedHistory, UnfixedHistory, OtherHistory } from '../screens';
+import { Login, MemberTransaction, Members, SchemePayment, OtherPayment, FixedHistory, UnfixedHistory, OtherHistory, Groups } from '../screens';
 import { createStackNavigator } from '@react-navigation/stack';
 import navigationStrings from '../constants/navigationStrings';
 
@@ -37,6 +37,7 @@ const Routes = () => {
                 <Stack.Screen name={navigationStrings.FIXED_HISTORY} component={FixedHistory}/>
                 <Stack.Screen name={navigationStrings.UNFIXED_HISTORY} component={UnfixedHistory}/>
                 <Stack.Screen name={navigationStrings.OTHER_HISTORY} component={OtherHistory}/>
+                <Stack.Screen name={navigationStrings.GROUPS} component={Groups}/>
             </Stack.Navigator>
             {/* {userToken == null ? <AuthStack /> : <AppStack />} */}
         </NavigationContainer>

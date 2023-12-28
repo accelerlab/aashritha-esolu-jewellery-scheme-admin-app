@@ -55,8 +55,8 @@ const Members = ({ navigation }) => {
     <View style={styles.container}>
       <Header
         title={"MEMBERS"}
-        showBackButton={false}
-        leftIcon={true}
+        showBackButton={true}
+        
       />
       {/* FlatList to render the data */}
       <FlatList
