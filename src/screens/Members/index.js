@@ -1,55 +1,82 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Header from '../../components/Header'
 import styles from './styles'
 import navigationStrings from '../../constants/navigationStrings'
-const Members = ({ navigation }) => {
-  // Array containing 10 different id and name combinations
-  const data = [
-    { id: 201, name: 'John Doe', phoneNumber: '123-456-7890', address: '123 Main St', groupCode: 'ABCD123' },
-    { id: 202, name: 'Jane Smith', phoneNumber: '987-654-3210', address: '456 Elm St', groupCode: 'EFGH456' },
-    { id: 203, name: 'Alice Johnson', phoneNumber: '111-222-3333', address: '789 Oak St', groupCode: 'IJKL789' },
-    { id: 204, name: 'Bob Williams', phoneNumber: '444-555-6666', address: '101 Pine St', groupCode: 'MNOP456' },
-    { id: 205, name: 'Eva Brown', phoneNumber: '777-888-9999', address: '202 Cedar St', groupCode: 'QRST123' },
-    { id: 206, name: 'Michael Davis', phoneNumber: '333-222-1111', address: '303 Walnut St', groupCode: 'UVWX789' },
-    { id: 207, name: 'Sophia Martinez', phoneNumber: '666-555-4444', address: '404 Maple St', groupCode: 'YZAB567' },
-    { id: 208, name: 'David Garcia', phoneNumber: '999-888-7777', address: '505 Birch St', groupCode: 'CDEF234' },
-    { id: 209, name: 'Olivia Miller', phoneNumber: '222-333-4444', address: '606 Spruce St', groupCode: 'GHIJ901' },
-    { id: 210, name: 'William Jones', phoneNumber: '888-999-0000', address: '707 Cherry St', groupCode: 'KLMN345' },
-];
+import { AuthContext } from '../../context/AuthContext'
+import useMakeRequest from '../../hooks/useMakeRequest'
+import constant from '../../constants/constant'
+import { showAlert } from '../../utils/Helper'
+
+const Members = ({ navigation, route }) => {
+  const { group } = route.params;
+  const [data, setData] = useState([]);
+  const { userToken } = useContext(AuthContext)
+  //customer fetch hook
+  const { getData } = useMakeRequest();
   const renderItem = ({ item, index }) => {
 
     return (
       <TouchableOpacity
         style={styles.itemContainer}
-        onPress={() => navigation.navigate(navigationStrings.MEMBER_TRANSACTION, { data: item })}
+        onPress={() => navigation.navigate(navigationStrings.MEMBER_TRANSACTION, { item: item })}
       >
         <View style={styles.infoContainer}>
           <View style={styles.detailContainer}>
             <Text style={styles.phone}>Member ID : </Text>
-            <Text style={styles.name}>{item.id}</Text>
+            <Text style={styles.name}>{item.MEMBER_ID}</Text>
           </View>
           <View style={styles.detailContainer}>
-            <Text style={styles.phone}>Group : </Text>
-            <Text style={styles.name}>{item.groupCode}</Text>
+            <Text style={styles.phone}>Member No.  : </Text>
+            <Text style={styles.name}>{item.MEMBER_NO}</Text>
           </View>
           <View style={styles.detailContainer}>
             <Text style={styles.phone}>Member Name : </Text>
-            <Text style={styles.name}>{item.name}</Text>
+            <Text style={styles.name}>{item.accountInfo?.ACC_NAME}</Text>
           </View>
           <View style={styles.detailContainer}>
-            <Text style={styles.phone}>Address : </Text>
-            <Text style={styles.name}>{item.address}</Text>
+            <Text style={styles.phone}>Member Code : </Text>
+            <Text style={styles.name}>{item.accountInfo?.ACC_CODE}</Text>
           </View>
           <View style={styles.detailContainer}>
             <Text style={styles.phone}>Phone no : </Text>
-            <Text style={styles.name}>{item.phoneNumber}</Text>
+            <Text style={styles.name}>{item.accountInfo?.ACC_PHONE}</Text>
           </View>
         </View>
 
       </TouchableOpacity>
     )
   }
+
+  //fetching group members
+  useEffect(() => {
+    console.log('refresh called');
+      getMembers();
+  },[] );
+  
+
+  //fetching all members
+  const getMembers = async () => {
+    try {
+      console.log('inside try block')
+      let url = `${constant.BASE_URL}/api/staff/group/members?group_id=${group}`;
+      console.log('url', url);
+      let headers = { 'access-token' : userToken };
+      let res = await getData(url, headers);
+      console.log('members res: ', res?.responseData);
+      if (res?.responseCode == 200) {
+        setData(res?.responseData)
+      }
+     
+      else {
+        showAlert('Error', 'Error occured');
+      }
+    } catch (error) {
+      console.log('lsit expense res api error', error);
+      showAlert('Error', 'Error occured');
+    }
+  };
+  
 
   return (
     <View style={styles.container}>
@@ -62,7 +89,7 @@ const Members = ({ navigation }) => {
       <FlatList
         data={data}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id.toString()}
+        //keyExtractor={(item) => item.id.toString()}
       />
     </View>
   )
