@@ -16,37 +16,6 @@
 		1E00A4BBF48841729A6810D0 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E40FB796BBD9435FB0A6B543 /* Poppins-Regular.ttf */; };
 		27401F7013A44946880DC037 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17B2F54F8946433BAAD5441B /* Poppins-Bold.ttf */; };
 		3B38BC6D75C04688B6570D34 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A78F03F7849448F29396070D /* Poppins-Medium.ttf */; };
-		7A89CCA82B5BD0300030EDED /* JewellerySchemeAdminAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A89CC832B5BD0300030EDED /* JewellerySchemeAdminAppTests.m */; };
-		7A89CCA92B5BD0300030EDED /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC842B5BD0300030EDED /* Info.plist */; };
-		7A89CCAA2B5BD0300030EDED /* JewellerySchemeAdminApp.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC852B5BD0300030EDED /* JewellerySchemeAdminApp.xcworkspace */; };
-		7A89CCAB2B5BD0300030EDED /* .xcode.env in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC862B5BD0300030EDED /* .xcode.env */; };
-		7A89CCAC2B5BD0300030EDED /* link-assets-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC872B5BD0300030EDED /* link-assets-manifest.json */; };
-		7A89CCAD2B5BD0300030EDED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC892B5BD0300030EDED /* LaunchScreen.storyboard */; };
-		7A89CCAE2B5BD0300030EDED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A89CC8B2B5BD0300030EDED /* main.m */; };
-		7A89CCAF2B5BD0300030EDED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC8C2B5BD0300030EDED /* Images.xcassets */; };
-		7A89CCB02B5BD0300030EDED /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7A89CC8D2B5BD0300030EDED /* AppDelegate.mm */; };
-		7A89CCB12B5BD0300030EDED /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC8E2B5BD0300030EDED /* Info.plist */; };
-		7A89CCB22B5BD0300030EDED /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC922B5BD0300030EDED /* Podfile */; };
-		7A89CCB32B5BD0300030EDED /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC942B5BD0300030EDED /* Fontisto.ttf */; };
-		7A89CCB42B5BD0300030EDED /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC952B5BD0300030EDED /* Octicons.ttf */; };
-		7A89CCB52B5BD0300030EDED /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC962B5BD0300030EDED /* Feather.ttf */; };
-		7A89CCB62B5BD0300030EDED /* FontAwesome6_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC972B5BD0300030EDED /* FontAwesome6_Regular.ttf */; };
-		7A89CCB72B5BD0300030EDED /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC982B5BD0300030EDED /* Entypo.ttf */; };
-		7A89CCB82B5BD0300030EDED /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC992B5BD0300030EDED /* FontAwesome5_Brands.ttf */; };
-		7A89CCB92B5BD0300030EDED /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC9A2B5BD0300030EDED /* MaterialCommunityIcons.ttf */; };
-		7A89CCBA2B5BD0300030EDED /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC9B2B5BD0300030EDED /* AntDesign.ttf */; };
-		7A89CCBB2B5BD0300030EDED /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC9C2B5BD0300030EDED /* Foundation.ttf */; };
-		7A89CCBC2B5BD0300030EDED /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC9D2B5BD0300030EDED /* Ionicons.ttf */; };
-		7A89CCBD2B5BD0300030EDED /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC9E2B5BD0300030EDED /* FontAwesome5_Solid.ttf */; };
-		7A89CCBE2B5BD0300030EDED /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CC9F2B5BD0300030EDED /* FontAwesome5_Regular.ttf */; };
-		7A89CCBF2B5BD0300030EDED /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CCA02B5BD0300030EDED /* FontAwesome.ttf */; };
-		7A89CCC02B5BD0300030EDED /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CCA12B5BD0300030EDED /* Zocial.ttf */; };
-		7A89CCC12B5BD0300030EDED /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CCA22B5BD0300030EDED /* EvilIcons.ttf */; };
-		7A89CCC22B5BD0300030EDED /* FontAwesome6_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CCA32B5BD0300030EDED /* FontAwesome6_Solid.ttf */; };
-		7A89CCC32B5BD0300030EDED /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CCA42B5BD0300030EDED /* SimpleLineIcons.ttf */; };
-		7A89CCC42B5BD0300030EDED /* FontAwesome6_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CCA52B5BD0300030EDED /* FontAwesome6_Brands.ttf */; };
-		7A89CCC52B5BD0300030EDED /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CCA62B5BD0300030EDED /* MaterialIcons.ttf */; };
-		7A89CCC62B5BD0300030EDED /* Podfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CCA72B5BD0300030EDED /* Podfile.lock */; };
 		7A89CCC82B5BD0550030EDED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A89CCC72B5BD0550030EDED /* GoogleService-Info.plist */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		CEE799C82B1868510004613C /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = CEE799C72B1868510004613C /* Fonts */; };
@@ -81,40 +50,8 @@
 		5709B34CF0A7D63546082F79 /* Pods-JewellerySchemeAdminApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JewellerySchemeAdminApp.release.xcconfig"; path = "Target Support Files/Pods-JewellerySchemeAdminApp/Pods-JewellerySchemeAdminApp.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-JewellerySchemeAdminApp-JewellerySchemeAdminAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JewellerySchemeAdminApp-JewellerySchemeAdminAppTests.debug.xcconfig"; path = "Target Support Files/Pods-JewellerySchemeAdminApp-JewellerySchemeAdminAppTests/Pods-JewellerySchemeAdminApp-JewellerySchemeAdminAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		63CBFACD75B659DC6549B4CA /* Pods_JewellerySchemeAdminApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JewellerySchemeAdminApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A89CC832B5BD0300030EDED /* JewellerySchemeAdminAppTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JewellerySchemeAdminAppTests.m; sourceTree = "<group>"; };
-		7A89CC842B5BD0300030EDED /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A89CC852B5BD0300030EDED /* JewellerySchemeAdminApp.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = JewellerySchemeAdminApp.xcworkspace; sourceTree = "<group>"; };
-		7A89CC862B5BD0300030EDED /* .xcode.env */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .xcode.env; sourceTree = "<group>"; };
-		7A89CC872B5BD0300030EDED /* link-assets-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "link-assets-manifest.json"; sourceTree = "<group>"; };
-		7A89CC892B5BD0300030EDED /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7A89CC8A2B5BD0300030EDED /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		7A89CC8B2B5BD0300030EDED /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7A89CC8C2B5BD0300030EDED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		7A89CC8D2B5BD0300030EDED /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		7A89CC8E2B5BD0300030EDED /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A89CC8F2B5BD0300030EDED /* JewellerySchemeAdminApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = JewellerySchemeAdminApp.xcodeproj; sourceTree = "<group>"; };
-		7A89CC922B5BD0300030EDED /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
-		7A89CC942B5BD0300030EDED /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
-		7A89CC952B5BD0300030EDED /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
-		7A89CC962B5BD0300030EDED /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
-		7A89CC972B5BD0300030EDED /* FontAwesome6_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Regular.ttf; sourceTree = "<group>"; };
-		7A89CC982B5BD0300030EDED /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
-		7A89CC992B5BD0300030EDED /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Brands.ttf; sourceTree = "<group>"; };
-		7A89CC9A2B5BD0300030EDED /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
-		7A89CC9B2B5BD0300030EDED /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
-		7A89CC9C2B5BD0300030EDED /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Foundation.ttf; sourceTree = "<group>"; };
-		7A89CC9D2B5BD0300030EDED /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
-		7A89CC9E2B5BD0300030EDED /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Solid.ttf; sourceTree = "<group>"; };
-		7A89CC9F2B5BD0300030EDED /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Regular.ttf; sourceTree = "<group>"; };
-		7A89CCA02B5BD0300030EDED /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
-		7A89CCA12B5BD0300030EDED /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
-		7A89CCA22B5BD0300030EDED /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
-		7A89CCA32B5BD0300030EDED /* FontAwesome6_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Solid.ttf; sourceTree = "<group>"; };
-		7A89CCA42B5BD0300030EDED /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
-		7A89CCA52B5BD0300030EDED /* FontAwesome6_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Brands.ttf; sourceTree = "<group>"; };
-		7A89CCA62B5BD0300030EDED /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
-		7A89CCA72B5BD0300030EDED /* Podfile.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
 		7A89CCC72B5BD0550030EDED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7A97783E2B5BD814009264A4 /* JewellerySchemeAdminApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = JewellerySchemeAdminApp.entitlements; path = JewellerySchemeAdminApp/JewellerySchemeAdminApp.entitlements; sourceTree = "<group>"; };
 		7E7A61E5D4344E46A746F39B /* Poppins-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Italic.ttf"; path = "../src/assets/fonts/Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = JewellerySchemeAdminApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-JewellerySchemeAdminApp-JewellerySchemeAdminAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JewellerySchemeAdminApp-JewellerySchemeAdminAppTests.release.xcconfig"; path = "Target Support Files/Pods-JewellerySchemeAdminApp-JewellerySchemeAdminAppTests/Pods-JewellerySchemeAdminApp-JewellerySchemeAdminAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -166,6 +103,7 @@
 		13B07FAE1A68108700A75B9A /* JewellerySchemeAdminApp */ = {
 			isa = PBXGroup;
 			children = (
+				7A97783E2B5BD814009264A4 /* JewellerySchemeAdminApp.entitlements */,
 				CEE799C72B1868510004613C /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -187,77 +125,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7A89CC812B5BD0300030EDED /* ios */ = {
-			isa = PBXGroup;
-			children = (
-				7A89CC822B5BD0300030EDED /* JewellerySchemeAdminAppTests */,
-				7A89CC852B5BD0300030EDED /* JewellerySchemeAdminApp.xcworkspace */,
-				7A89CC862B5BD0300030EDED /* .xcode.env */,
-				7A89CC872B5BD0300030EDED /* link-assets-manifest.json */,
-				7A89CC882B5BD0300030EDED /* JewellerySchemeAdminApp */,
-				7A89CC8F2B5BD0300030EDED /* JewellerySchemeAdminApp.xcodeproj */,
-				7A89CC922B5BD0300030EDED /* Podfile */,
-				7A89CC932B5BD0300030EDED /* Fonts */,
-				7A89CCA72B5BD0300030EDED /* Podfile.lock */,
-			);
-			name = ios;
-			sourceTree = "<group>";
-		};
-		7A89CC822B5BD0300030EDED /* JewellerySchemeAdminAppTests */ = {
-			isa = PBXGroup;
-			children = (
-				7A89CC832B5BD0300030EDED /* JewellerySchemeAdminAppTests.m */,
-				7A89CC842B5BD0300030EDED /* Info.plist */,
-			);
-			path = JewellerySchemeAdminAppTests;
-			sourceTree = "<group>";
-		};
-		7A89CC882B5BD0300030EDED /* JewellerySchemeAdminApp */ = {
-			isa = PBXGroup;
-			children = (
-				7A89CC892B5BD0300030EDED /* LaunchScreen.storyboard */,
-				7A89CC8A2B5BD0300030EDED /* AppDelegate.h */,
-				7A89CC8B2B5BD0300030EDED /* main.m */,
-				7A89CC8C2B5BD0300030EDED /* Images.xcassets */,
-				7A89CC8D2B5BD0300030EDED /* AppDelegate.mm */,
-				7A89CC8E2B5BD0300030EDED /* Info.plist */,
-			);
-			path = JewellerySchemeAdminApp;
-			sourceTree = "<group>";
-		};
-		7A89CC902B5BD0300030EDED /* Products */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		7A89CC932B5BD0300030EDED /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				7A89CC942B5BD0300030EDED /* Fontisto.ttf */,
-				7A89CC952B5BD0300030EDED /* Octicons.ttf */,
-				7A89CC962B5BD0300030EDED /* Feather.ttf */,
-				7A89CC972B5BD0300030EDED /* FontAwesome6_Regular.ttf */,
-				7A89CC982B5BD0300030EDED /* Entypo.ttf */,
-				7A89CC992B5BD0300030EDED /* FontAwesome5_Brands.ttf */,
-				7A89CC9A2B5BD0300030EDED /* MaterialCommunityIcons.ttf */,
-				7A89CC9B2B5BD0300030EDED /* AntDesign.ttf */,
-				7A89CC9C2B5BD0300030EDED /* Foundation.ttf */,
-				7A89CC9D2B5BD0300030EDED /* Ionicons.ttf */,
-				7A89CC9E2B5BD0300030EDED /* FontAwesome5_Solid.ttf */,
-				7A89CC9F2B5BD0300030EDED /* FontAwesome5_Regular.ttf */,
-				7A89CCA02B5BD0300030EDED /* FontAwesome.ttf */,
-				7A89CCA12B5BD0300030EDED /* Zocial.ttf */,
-				7A89CCA22B5BD0300030EDED /* EvilIcons.ttf */,
-				7A89CCA32B5BD0300030EDED /* FontAwesome6_Solid.ttf */,
-				7A89CCA42B5BD0300030EDED /* SimpleLineIcons.ttf */,
-				7A89CCA52B5BD0300030EDED /* FontAwesome6_Brands.ttf */,
-				7A89CCA62B5BD0300030EDED /* MaterialIcons.ttf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				7A89CCC72B5BD0550030EDED /* GoogleService-Info.plist */,
-				7A89CC812B5BD0300030EDED /* ios */,
 				13B07FAE1A68108700A75B9A /* JewellerySchemeAdminApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* JewellerySchemeAdminAppTests */,
@@ -391,12 +257,6 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 7A89CC902B5BD0300030EDED /* Products */;
-					ProjectRef = 7A89CC8F2B5BD0300030EDED /* JewellerySchemeAdminApp.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* JewellerySchemeAdminApp */,
@@ -417,43 +277,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A89CCB32B5BD0300030EDED /* Fontisto.ttf in Resources */,
-				7A89CCC02B5BD0300030EDED /* Zocial.ttf in Resources */,
-				7A89CCB72B5BD0300030EDED /* Entypo.ttf in Resources */,
-				7A89CCBC2B5BD0300030EDED /* Ionicons.ttf in Resources */,
-				7A89CCB22B5BD0300030EDED /* Podfile in Resources */,
-				7A89CCB52B5BD0300030EDED /* Feather.ttf in Resources */,
-				7A89CCBA2B5BD0300030EDED /* AntDesign.ttf in Resources */,
-				7A89CCB12B5BD0300030EDED /* Info.plist in Resources */,
-				7A89CCAC2B5BD0300030EDED /* link-assets-manifest.json in Resources */,
-				7A89CCC32B5BD0300030EDED /* SimpleLineIcons.ttf in Resources */,
-				7A89CCC42B5BD0300030EDED /* FontAwesome6_Brands.ttf in Resources */,
 				7A89CCC82B5BD0550030EDED /* GoogleService-Info.plist in Resources */,
 				CEE799C82B1868510004613C /* Fonts in Resources */,
-				7A89CCBE2B5BD0300030EDED /* FontAwesome5_Regular.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				7A89CCBF2B5BD0300030EDED /* FontAwesome.ttf in Resources */,
-				7A89CCBB2B5BD0300030EDED /* Foundation.ttf in Resources */,
-				7A89CCAB2B5BD0300030EDED /* .xcode.env in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				0CD1D9480CCF4B76AEE9CB87 /* Poppins-Black.ttf in Resources */,
-				7A89CCC62B5BD0300030EDED /* Podfile.lock in Resources */,
-				7A89CCAF2B5BD0300030EDED /* Images.xcassets in Resources */,
 				27401F7013A44946880DC037 /* Poppins-Bold.ttf in Resources */,
 				16AC06E660844D8FB390566B /* Poppins-Italic.ttf in Resources */,
 				3B38BC6D75C04688B6570D34 /* Poppins-Medium.ttf in Resources */,
-				7A89CCC12B5BD0300030EDED /* EvilIcons.ttf in Resources */,
-				7A89CCAA2B5BD0300030EDED /* JewellerySchemeAdminApp.xcworkspace in Resources */,
 				1E00A4BBF48841729A6810D0 /* Poppins-Regular.ttf in Resources */,
-				7A89CCB82B5BD0300030EDED /* FontAwesome5_Brands.ttf in Resources */,
-				7A89CCBD2B5BD0300030EDED /* FontAwesome5_Solid.ttf in Resources */,
-				7A89CCAD2B5BD0300030EDED /* LaunchScreen.storyboard in Resources */,
-				7A89CCB62B5BD0300030EDED /* FontAwesome6_Regular.ttf in Resources */,
-				7A89CCB42B5BD0300030EDED /* Octicons.ttf in Resources */,
-				7A89CCA92B5BD0300030EDED /* Info.plist in Resources */,
-				7A89CCC52B5BD0300030EDED /* MaterialIcons.ttf in Resources */,
-				7A89CCB92B5BD0300030EDED /* MaterialCommunityIcons.ttf in Resources */,
-				7A89CCC22B5BD0300030EDED /* FontAwesome6_Solid.ttf in Resources */,
 				EE0F11DB196C4348B90DF115 /* Poppins-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -638,9 +470,6 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				7A89CCAE2B5BD0300030EDED /* main.m in Sources */,
-				7A89CCB02B5BD0300030EDED /* AppDelegate.mm in Sources */,
-				7A89CCA82B5BD0300030EDED /* JewellerySchemeAdminAppTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,6 +541,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = JewellerySchemeAdminApp/JewellerySchemeAdminApp.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = JewellerySchemeAdminApp/Info.plist;
@@ -740,6 +570,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = JewellerySchemeAdminApp/JewellerySchemeAdminApp.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = JewellerySchemeAdminApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = JewellerySchemeAdminApp;
