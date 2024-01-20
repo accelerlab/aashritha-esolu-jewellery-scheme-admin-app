@@ -13,81 +13,112 @@ import { AuthContext } from '../../context/AuthContext'
 import useMakeRequest from '../../hooks/useMakeRequest'
 import constant from '../../constants/constant'
 import { showAlert } from '../../utils/Helper'
+import moment from 'moment'
 
 
 const MemberTransaction = ({ route, navigation }) => {
   const { item } = route.params;
   const [data, setData] = useState([]);
   const { userToken } = useContext(AuthContext)
-  const { getData } = useMakeRequest();
+  const { getData, postData } = useMakeRequest();
 
-  //fetching reciept details
+  //fetching payment details
   useEffect(() => {
-    console.log('refresh called');
-    getReciept();
+    getPaymentList();
   }, []);
-
-  const getReciept = async () => {
+  const getPaymentList = async () => {
     try {
-      console.log('inside try block')
-      let url = `${constant.BASE_URL}/api/receipt/list?member_id=${item.MEMBER_ID}`;
+      console.log('inside try block');
+      let url = `${constant.BASE_URL}/api/payment/list`;
       console.log('url', url);
       let headers = { 'access-token': userToken };
       let res = await getData(url, headers);
       console.log('members res: ', res?.responseData);
       if (res?.responseCode == 200) {
-        setData(res?.responseData)
-      }
-
-      else {
+        setData(res?.responseData);
+        console.log('response recipt: ', res?.responseData);
+      } else {
         showAlert('Error', 'Error occured');
       }
     } catch (error) {
-      console.log('lsit expense res api error', error);
+      console.log('lsit payment res api error', error);
       showAlert('Error', 'Error occured');
     }
   };
 
-  const viewReciept = 'Generate Reciept >'
+  //createReciept
+  const createReciept = async (pymtitem_id) => {
+    try {
+      console.log('generating invoice')
+      let url = `${constant.BASE_URL}/api/receipt/create?pymtitem_id=${pymtitem_id}`;
+      console.log('url', url);
+      let headers = { 'access-token': userToken };
+      let res = await postData(url, null, headers);
+      console.log('payment item id: ', pymtitem_id);
+      if (res?.responseCode == 200) {
+        showAlert('Success', 'Invoice Generated')
+      } else {
+        showAlert('Error', 'Invoice Generation failed');
+        console.log('response for invoice: ', res);
+      }
+    } catch (error) {
+      console.log('generate invoice res api error', error);
+      showAlert('Error', 'Error occured');
+    }
+  }
+
   const renderItem = ({ item, index }) => {
     return (
-      <View style={{ ...styles.itemContainer, marginBottom: index == item.length - 1 ? 90 : 20 }}>
+      <View
+        style={{
+          ...styles.itemContainer,
+          marginBottom: index == data.length - 1 ? 90 : 20,
+        }}
+      >
         <View style={styles.customerInfoContainer}>
-          <Text style={styles.detailText}>Reciept No: <Text style={styles.heading}>{item.rcptNo}</Text></Text>
-          <Text style={styles.heading}>{item.rcptDate}</Text>
+          <Text style={styles.detailText}>
+            Payment Id: <Text style={styles.heading}>{item?.PYMT_ID}</Text>
+          </Text>
+          <Text style={styles.heading}>{moment(item.TRANSACTION_AT).format('DD/MM/YYYY')}</Text>
         </View>
-        <View style={[styles.detailContainer, styles.rowContainer]}>
+        {/* <View style={[styles.detailContainer, styles.rowContainer]}>
           <Text style={styles.heading}>Instal No</Text>
           <Text style={styles.heading}>{item.instlNo}</Text>
-        </View>
-        <View style={{ ...styles.detailContainer, paddingTop: 0 }}>
-          {/* Staff Expense Array */}
-          <View style={styles.rowContainer}>
+        </View> */}
+        {/* <View style={{ ...styles.detailContainer, paddingTop: 0 }}>
+          <View style={styles.rowContainer}> 
             <Text style={styles.heading}>Amount</Text>
             <Text style={styles.heading}>Rate</Text>
           </View>
           <View style={styles.rowContainer}>
-            <Text numberOfLines={1} style={styles.infoText}>{item.amount}</Text>
+            <Text numberOfLines={1} style={styles.infoText}>
+              {item.paymentInfo[0].PYMTITEM_AMOUNT}
+            </Text>
             <Text style={styles.infoText}>{item.rate}</Text>
           </View>
+        </View> */}
+        <View style={[styles.detailContainer, styles.rowContainer]}>
+          <Text style={styles.heading}>Amount Paid</Text>
+          <Text style={styles.heading}>{item.paymentInfo[0].PYMTITEM_AMOUNT}</Text>
         </View>
         <View style={[styles.detailContainer, styles.rowContainer]}>
+          <Text style={styles.heading}>Total Amount</Text>
+          <Text style={styles.heading}>{item.TOTAL_AMOUNT}</Text>
+        </View>
+        {/* <View style={[styles.detailContainer, styles.rowContainer]}>
           <Text style={styles.heading}>Weight</Text>
           <Text style={styles.heading}>{item.weight}</Text>
-        </View>
-        <TouchableOpacity
-          style={{ alignSelf: 'center' }}
-        // onPress={() => {
-        //     setSelectedIndex(index);
-        //     //navigation.navigate(navigationStrings.BILLS_DETAILS, { id: item?.expense_id, status: item?.status, staffData: user })
-        // }}
-        >
-
-          <Text style={styles.detailText}>{viewReciept}</Text>
-        </TouchableOpacity>
+        </View> */}
+        {item.paymentInfo[0].IS_RCPTED == 1 ? 
+        (<TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => navigation.navigate(navigationStrings.INVOICE, {id : item.paymentInfo[0].memberInfo.MEMBER_ID})}>
+          <Text style={styles.detailText}>{'View Invoice >'}</Text>
+        </TouchableOpacity>) : 
+        (<TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => createReciept(item.paymentInfo[0].PYMTITEM_ID)}>
+        <Text style={styles.detailText}>{'Generate Invoice >'}</Text>
+      </TouchableOpacity>)}
       </View>
-    )
-  }
+    );
+  };
   return (
     <View style={styles.container}>
       <Header title={"MEMBER TRANSACTIONS"} showBackButton={true} />

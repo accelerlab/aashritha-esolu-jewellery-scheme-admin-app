@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image, Alert } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import Header from '../../components/Header'
 import styles from './styles'
