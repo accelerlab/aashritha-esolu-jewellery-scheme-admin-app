@@ -8,7 +8,7 @@ import useMakeRequest from '../../hooks/useMakeRequest'
 import constant from '../../constants/constant'
 import { showAlert } from '../../utils/Helper'
 
-const index = ({ navigation }) => {
+const Groups = ({ navigation }) => {
   const { logout, userToken } = useContext(AuthContext);
   const [data, setData] = useState([]);
   const { getData } = useMakeRequest();
@@ -87,11 +87,18 @@ const index = ({ navigation }) => {
         additionalButtons={[
           {
             size: 27,
+            icon: 'notifications-outline',
+            // onPress: logooutAlert,
+            color: 'black',
+          },
+          {
+            size: 27,
             icon: 'log-out-outline',
             onPress: logooutAlert,
             color: 'black',
           },
         ]}
+        notificationCount={3} 
       />
       {/* FlatList to render the data */}
       <FlatList
@@ -103,4 +110,4 @@ const index = ({ navigation }) => {
   )
 }
 
-export default index
+export default Groups

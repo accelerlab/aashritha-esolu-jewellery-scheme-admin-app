@@ -12,7 +12,7 @@ import navigationStrings from '../../constants/navigationStrings'
 import { AuthContext } from '../../context/AuthContext'
 import useMakeRequest from '../../hooks/useMakeRequest'
 import constant from '../../constants/constant'
-import { showAlert } from '../../utils/Helper'
+import { showAlert, showErrorMsg } from '../../utils/Helper'
 import moment from 'moment'
 
 
@@ -29,7 +29,7 @@ const MemberTransaction = ({ route, navigation }) => {
   const getPaymentList = async () => {
     try {
       console.log('inside try block');
-      let url = `${constant.BASE_URL}/api/payment/list`;
+      let url = `${constant.BASE_URL}/api/payment/list?member_id=${item.MEMBER_ID}`;
       console.log('url', url);
       let headers = { 'access-token': userToken };
       let res = await getData(url, headers);
@@ -37,12 +37,19 @@ const MemberTransaction = ({ route, navigation }) => {
       if (res?.responseCode == 200) {
         setData(res?.responseData);
         console.log('response recipt: ', res?.responseData);
-      } else {
-        showAlert('Error', 'Error occured');
+      }
+      else if (res?.responseCode == 204) {
+        console.log("no transaction found");
+        setData(res?.responseData);
+
+      }
+      else {
+        showAlert('Warning', res?.responseMessage);
       }
     } catch (error) {
       console.log('lsit payment res api error', error);
-      showAlert('Error', 'Error occured');
+      showErrorMsg();
+
     }
   };
 
@@ -53,7 +60,12 @@ const MemberTransaction = ({ route, navigation }) => {
       let url = `${constant.BASE_URL}/api/receipt/create?pymtitem_id=${pymtitem_id}`;
       console.log('url', url);
       let headers = { 'access-token': userToken };
-      let res = await postData(url, null, headers);
+      let body = {
+        'rcpt_type' : 'Receipt',
+        'rcpt_no' : '101',
+        'type' : 'Online',
+      }
+      let res = await postData(url, body, headers);
       console.log('payment item id: ', pymtitem_id);
       if (res?.responseCode == 200) {
         showAlert('Success', 'Invoice Generated')
@@ -109,13 +121,13 @@ const MemberTransaction = ({ route, navigation }) => {
           <Text style={styles.heading}>Weight</Text>
           <Text style={styles.heading}>{item.weight}</Text>
         </View> */}
-        {item.paymentInfo[0].IS_RCPTED == 1 ? 
-        (<TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => navigation.navigate(navigationStrings.INVOICE, {id : item.paymentInfo[0].memberInfo.MEMBER_ID})}>
-          <Text style={styles.detailText}>{'View Invoice >'}</Text>
-        </TouchableOpacity>) : 
-        (<TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => createReciept(item.paymentInfo[0].PYMTITEM_ID)}>
-        <Text style={styles.detailText}>{'Generate Invoice >'}</Text>
-      </TouchableOpacity>)}
+        {item.paymentInfo[0].IS_RCPTED == 1 ?
+          (<TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => navigation.navigate(navigationStrings.INVOICE, { mem_id: item.paymentInfo[0].memberInfo.MEMBER_ID, pymt_id : item.paymentInfo[0].PYMTITEM_ID })}>
+            <Text style={styles.detailText}>{'View Invoice >'}</Text>
+          </TouchableOpacity>) :
+          (<TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => createReciept(item.paymentInfo[0].PYMTITEM_ID)}>
+            <Text style={styles.detailText}>{'Generate Invoice >'}</Text>
+          </TouchableOpacity>)}
       </View>
     );
   };

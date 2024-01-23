@@ -1,30 +1,36 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext';
 import useMakeRequest from '../../hooks/useMakeRequest';
 import constant from '../../constants/constant';
+import { showAlert } from '../../utils/Helper';
+import Header from '../../components/Header';
+import moment from 'moment';
+import styles from './styles';
 
 const Invoice = ({ navigation, route }) => {
-    const { id } = route.params;
+    const { mem_id } = route.params;
+    const { pymt_id } = route.params;
     const [data, setData] = useState([]);
     const { userToken } = useContext(AuthContext)
-    const { getData, postData } = useMakeRequest();
+    const { getData } = useMakeRequest();
     useEffect(() => {
         getInvoice();
     }, []);
     const getInvoice = async () => {
         try {
             console.log('inside try block');
-            let url = `${constant.BASE_URL}/api/receipt/list?member_id=${id}`;
+            let url = `${constant.BASE_URL}/api/receipt/list?member_id=${mem_id}&pymtitem_id=${pymt_id}`;
             console.log('url', url);
             let headers = { 'access-token': userToken };
             let res = await getData(url, headers);
-            console.log('members res: ', res?.responseData);
+            console.log('res: ', res);
             if (res?.responseCode == 200) {
-                setData(res?.responseData);
-                console.log('response recipt: ', res?.responseData);
+                setData(res?.responseData[0]);
+                console.log('response data: ', res?.responseData[0]);
             } else {
                 showAlert('Error', 'Error occured');
+                //console.log('response recipt: ', res?.responseData);
             }
         } catch (error) {
             console.log('lsit payment res api error', error);
@@ -32,12 +38,44 @@ const Invoice = ({ navigation, route }) => {
         }
     };
     return (
-        <View>
-            <Text>Invoice</Text>
+        <View style={styles.container}>
+            <Header title={'RECEIPT'} showBackButton={true} />
+            <View
+                style={{
+                    ...styles.itemContainer,
+                    marginBottom: data == data.length - 1 ? 90 : 20,
+                }}
+            >
+                <View style={styles.customerInfoContainer}>
+                    <Text style={styles.detailText}>
+                        Receipt Id: <Text style={styles.heading}>{data.RCPT_ID}</Text>
+                    </Text>
+                    <Text style={styles.heading}>{moment(data.RCPT_DATE).format('DD/MM/YYYY')}</Text>
+                </View>
+                <View style={[styles.detailContainer, styles.rowContainer]}>
+                    <Text style={styles.heading}>Member Id</Text>
+                    <Text style={styles.heading}>{data.MEMBER_ID}</Text>
+                </View>
+                <View style={[styles.detailContainer, styles.rowContainer]}>
+                    <Text style={styles.heading}>Receipt Type</Text>
+                    <Text style={styles.heading}>{data.TYPE}</Text>
+                </View>
+                <View style={[styles.detailContainer, styles.rowContainer]}>
+                    <Text style={styles.heading}>Receipt Number</Text>
+                    <Text style={styles.heading}>{data.RCPT_NO}</Text>
+                </View>
+                <View style={[styles.detailContainer, styles.rowContainer]}>
+                    <Text style={styles.heading}>Receipt Amount</Text>
+                    <Text style={styles.heading}>{data.RCPT_AMOUNT}</Text>
+                </View>
+                {/* <View style={[styles.detailContainer, styles.rowContainer]}>
+          <Text style={styles.heading}>Weight</Text>
+          <Text style={styles.heading}>{item.weight}</Text>
+        </View> */}
+                
+            </View>
         </View>
     )
 }
 
 export default Invoice
-
-const styles = StyleSheet.create({})

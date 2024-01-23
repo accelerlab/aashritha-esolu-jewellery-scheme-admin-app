@@ -29,3 +29,6 @@ export const checkImageSize = (size) => {
 
 }
 
+export const showErrorMsg = () => {
+    Alert.alert("Warning", "Services arent available at the moment. Please try again after sometime or contact Admin")
+}

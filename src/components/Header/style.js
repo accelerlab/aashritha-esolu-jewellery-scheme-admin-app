@@ -24,6 +24,22 @@ export default StyleSheet.create({
     rowContainer: {
         flexDirection: 'row', 
         alignItems: 'center'
-    }
+    },
+    notificationBadge: {
+        position: 'absolute',
+        bottom: 20,
+        left: 15,
+        backgroundColor: '#E74C3C',
+        borderRadius: 10,
+        width: 15,
+        height: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      notificationBadgeText: {
+        color: 'white',
+        fontSize: 12,
+        fontWeight: 'bold',
+      },
 
 })

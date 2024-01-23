@@ -5,6 +5,7 @@ const Stack = createStackNavigator();
 import {notificationListeners} from '../services/notificationServices';
 import {useEffect} from 'react';
 import messaging from '@react-native-firebase/messaging';
+import Invoice from '../screens/Invoice';
 function AppStack() {
   useEffect(() => {
     console.log('inside app stack useffect');
@@ -23,10 +24,8 @@ function AppStack() {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name={navigationStrings.GROUPS} component={Groups} />
       <Stack.Screen name={navigationStrings.MEMBERS} component={Members} />
-      <Stack.Screen
-        name={navigationStrings.MEMBER_TRANSACTION}
-        component={MemberTransaction}
-      />
+      <Stack.Screen name={navigationStrings.MEMBER_TRANSACTION} component={MemberTransaction}/>
+      <Stack.Screen name={navigationStrings.INVOICE} component={Invoice}/>
     </Stack.Navigator>
   );
 }

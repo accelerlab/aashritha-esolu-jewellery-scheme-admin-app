@@ -6,7 +6,7 @@ import styles from './style'
 import colors from '../../constants/colors'
 import { useNavigation } from '@react-navigation/native'
 
-const Header = ({ title, additionalButtons, showBackButton, onPress }) => {
+const Header = ({ title, additionalButtons, showBackButton, onPress, notificationCount }) => {
     const navigation = useNavigation();
 
     return (
@@ -23,6 +23,11 @@ const Header = ({ title, additionalButtons, showBackButton, onPress }) => {
             <View style={styles.rowContainer}>
                 {additionalButtons && additionalButtons.map((button, index) => (
                     <TouchableOpacity key={index} onPress={() => button.onPress()} style={{ marginLeft: 20 }}>
+                        {button.icon === 'notifications-outline' && notificationCount > 0 && (
+                            <View style={styles.notificationBadge}>
+                                <Text style={styles.notificationBadgeText}>{notificationCount}</Text>
+                            </View>
+                        )}
                         <Ionicons
                             size={button.size}
                             color={button.color || colors.black}
@@ -34,4 +39,4 @@ const Header = ({ title, additionalButtons, showBackButton, onPress }) => {
     )
 }
 
-export default Header
+export default Header;
