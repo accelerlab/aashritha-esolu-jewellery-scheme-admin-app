@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from 'react';
-import {View, ActivityIndicator} from 'react-native';
+import {View, ActivityIndicator, AppState} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import AuthStack from './AuthStack';
 import {AuthContext} from '../context/AuthContext';
@@ -7,7 +7,24 @@ import AppStack from './AppStack';
 import colors from '../constants/colors';
 import NavigationService from './NavigationService';
 const Routes = () => {
-  const {isLoading, userToken} = useContext(AuthContext);
+  const {isLoading, userToken, getNotificationCount} = useContext(AuthContext);
+
+  useEffect(() => {
+    const appStateListener = AppState.addEventListener(
+      'change',
+      nextAppState => {
+        console.log('Next AppState is: ', nextAppState);
+        //getting latet version each time app comes  foreground
+        if (nextAppState == 'active') {
+          //fetching notification count when app comes in foregroudn
+          getNotificationCount();
+        }
+      },
+    );
+    return () => {
+      appStateListener?.remove();
+    };
+  }, []);
 
   if (isLoading) {
     return (

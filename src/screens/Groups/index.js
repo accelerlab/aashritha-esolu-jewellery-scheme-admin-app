@@ -1,19 +1,27 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image, Alert } from 'react-native'
-import React, { useContext, useEffect, useState } from 'react'
-import Header from '../../components/Header'
-import styles from './styles'
-import navigationStrings from '../../constants/navigationStrings'
-import { AuthContext } from '../../context/AuthContext'
-import useMakeRequest from '../../hooks/useMakeRequest'
-import constant from '../../constants/constant'
-import { showAlert, showErrorMsg } from '../../utils/Helper'
-import Loading from '../../components/Loading'
-import NoDataFound from '../../components/NoDataFound'
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+  Image,
+  Alert,
+} from 'react-native';
+import React, {useContext, useEffect, useState} from 'react';
+import Header from '../../components/Header';
+import styles from './styles';
+import navigationStrings from '../../constants/navigationStrings';
+import {AuthContext} from '../../context/AuthContext';
+import useMakeRequest from '../../hooks/useMakeRequest';
+import constant from '../../constants/constant';
+import {showAlert, showErrorMsg} from '../../utils/Helper';
+import Loading from '../../components/Loading';
+import NoDataFound from '../../components/NoDataFound';
 
-const Groups = ({ navigation }) => {
-  const { logout, userToken } = useContext(AuthContext);
+const Groups = ({navigation}) => {
+  const {logout, userToken} = useContext(AuthContext);
   const [data, setData] = useState([]);
-  const { getData } = useMakeRequest();
+  const {getData} = useMakeRequest();
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     console.log('refresh called');
@@ -22,17 +30,15 @@ const Groups = ({ navigation }) => {
   const getGroups = async () => {
     try {
       setLoading(true);
-      console.log('inside try block')
+      console.log('inside try block');
       let url = `${constant.BASE_URL}/api/staff/groups`;
       console.log('url', url);
-      let headers = { 'access-token': userToken };
+      let headers = {'access-token': userToken};
       let res = await getData(url, headers);
       console.log('members res: ', res?.responseData);
       if (res?.responseCode == 200) {
-        setData(res?.responseData)
-      }
-
-      else {
+        setData(res?.responseData);
+      } else {
         showErrorMsg();
       }
     } catch (error) {
@@ -43,13 +49,13 @@ const Groups = ({ navigation }) => {
     }
   };
 
-  const renderItem = ({ item, index }) => {
-
+  const renderItem = ({item, index}) => {
     return (
       <TouchableOpacity
         style={styles.itemContainer}
-        onPress={() => navigation.navigate(navigationStrings.MEMBERS, { group: item.group })}
-      >
+        onPress={() =>
+          navigation.navigate(navigationStrings.MEMBERS, {group: item.group})
+        }>
         <View style={styles.infoContainer}>
           <View style={styles.detailContainer}>
             <Text style={styles.phone}>Group Name : </Text>
@@ -72,10 +78,9 @@ const Groups = ({ navigation }) => {
             <Text style={styles.name}>{item.GROUP_TOTALINST}</Text>
           </View>
         </View>
-
       </TouchableOpacity>
-    )
-  }
+    );
+  };
   //logout alert message
   const logooutAlert = () => {
     Alert.alert('Confirmation', 'Are you sure you want to logout?', [
@@ -83,7 +88,7 @@ const Groups = ({ navigation }) => {
         text: 'Cancel',
         style: 'cancel',
       },
-      { text: 'Ok', onPress: () => logout() },
+      {text: 'Ok', onPress: () => logout()},
     ]);
   };
   return (
@@ -94,7 +99,7 @@ const Groups = ({ navigation }) => {
           {
             size: 27,
             icon: 'notifications-outline',
-            // onPress: logooutAlert,
+            onPress: () => navigation.navigate(navigationStrings.NOTIFICATION),
             color: 'black',
           },
           {
@@ -104,7 +109,7 @@ const Groups = ({ navigation }) => {
             color: 'black',
           },
         ]}
-        notificationCount={3}
+        
       />
       {/* FlatList to render the data */}
       {loading ? (
@@ -113,14 +118,13 @@ const Groups = ({ navigation }) => {
         <FlatList
           data={data}
           renderItem={renderItem}
-        // keyExtractor={(item) => {item.MEMBER_ID.toString()}}
+          // keyExtractor={(item) => {item.MEMBER_ID.toString()}}
         />
       ) : (
         <NoDataFound />
       )}
-
     </View>
-  )
-}
+  );
+};
 
-export default Groups
+export default Groups;

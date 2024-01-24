@@ -11,4 +11,5 @@ export default {
     OTHER_HISTORY : 'OtherHistory',
     GROUPS : 'Groups',
     INVOICE : 'Invoice',
+    NOTIFICATION:'Notifcation'
 }

@@ -12,8 +12,10 @@ export const AuthProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [userToken, setuserToken] = useState(null);
 
+    const [notificationCount, setNotifcationCount] = useState(0);
 
-    const { postData } = useMakeRequest()
+
+    const { postData,getData } = useMakeRequest()
 
     //login method
     const login = async (username, password, fcmToken) => {
@@ -104,6 +106,23 @@ export const AuthProvider = ({ children }) => {
         isLoggenIn();
     }, [])
 
+    //clean notfication unread count
+    const getNotificationCount = async () => {
+        try {
+            let url = `${constant.BASE_URL}/api/notification/count`
+            let headers = { 'access-token': userToken }
+            let res = await getData(url, headers);
+            if (res?.responseCode == 200) {
+                console.log("unread notifcation count", res?.responseData?.count);
+                //cart item count
+                setNotifcationCount(res?.responseData?.count)
+            }
+        }
+        catch (error) {
+            console.log("notification count fetch error", error);
+        }
+    }
+
 
 
 
@@ -113,6 +132,8 @@ export const AuthProvider = ({ children }) => {
             logout,
             isLoading,
             userToken,
+            notificationCount,
+            getNotificationCount,
 
         }}>
             {children}
