@@ -14,6 +14,8 @@ import useMakeRequest from '../../hooks/useMakeRequest'
 import constant from '../../constants/constant'
 import { showAlert, showErrorMsg } from '../../utils/Helper'
 import moment from 'moment'
+import Loading from '../../components/Loading'
+import NoDataFound from '../../components/NoDataFound'
 
 
 const MemberTransaction = ({ route, navigation }) => {
@@ -21,6 +23,7 @@ const MemberTransaction = ({ route, navigation }) => {
   const [data, setData] = useState([]);
   const { userToken } = useContext(AuthContext)
   const { getData, postData } = useMakeRequest();
+  const [loading, setLoading] = useState(false);
 
   //fetching payment details
   useEffect(() => {
@@ -28,6 +31,7 @@ const MemberTransaction = ({ route, navigation }) => {
   }, []);
   const getPaymentList = async () => {
     try {
+      setLoading(true);
       console.log('inside try block');
       let url = `${constant.BASE_URL}/api/payment/list?member_id=${item.MEMBER_ID}`;
       console.log('url', url);
@@ -50,7 +54,10 @@ const MemberTransaction = ({ route, navigation }) => {
       console.log('lsit payment res api error', error);
       showErrorMsg();
 
+    } finally {
+      setLoading(false);
     }
+
   };
 
   //createReciept
@@ -61,9 +68,9 @@ const MemberTransaction = ({ route, navigation }) => {
       console.log('url', url);
       let headers = { 'access-token': userToken };
       let body = {
-        'rcpt_type' : 'Receipt',
-        'rcpt_no' : '101',
-        'type' : 'Online',
+        'rcpt_type': 'Receipt',
+        'rcpt_no': '101',
+        'type': 'Online',
       }
       let res = await postData(url, body, headers);
       console.log('payment item id: ', pymtitem_id);
@@ -122,7 +129,7 @@ const MemberTransaction = ({ route, navigation }) => {
           <Text style={styles.heading}>{item.weight}</Text>
         </View> */}
         {item.paymentInfo[0].IS_RCPTED == 1 ?
-          (<TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => navigation.navigate(navigationStrings.INVOICE, { mem_id: item.paymentInfo[0].memberInfo.MEMBER_ID, pymt_id : item.paymentInfo[0].PYMTITEM_ID })}>
+          (<TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => navigation.navigate(navigationStrings.INVOICE, { mem_id: item.paymentInfo[0].memberInfo.MEMBER_ID, pymt_id: item.paymentInfo[0].PYMTITEM_ID })}>
             <Text style={styles.detailText}>{'View Invoice >'}</Text>
           </TouchableOpacity>) :
           (<TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => createReciept(item.paymentInfo[0].PYMTITEM_ID)}>
@@ -147,10 +154,17 @@ const MemberTransaction = ({ route, navigation }) => {
         <Button title={'Make payment'} onPress={() => onSelectPayment()} />
         <Button title={'Transaction History'} onPress={() => onSelectHistory()} />
       </View> */}
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-      />
+      {loading ? (
+        <Loading />
+      ) : data.length > 0 ? (
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+        />
+      ) : (
+        <NoDataFound />
+      )}
+
 
 
     </View>

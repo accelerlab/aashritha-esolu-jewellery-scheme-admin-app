@@ -6,34 +6,40 @@ import navigationStrings from '../../constants/navigationStrings'
 import { AuthContext } from '../../context/AuthContext'
 import useMakeRequest from '../../hooks/useMakeRequest'
 import constant from '../../constants/constant'
-import { showAlert } from '../../utils/Helper'
+import { showAlert, showErrorMsg } from '../../utils/Helper'
+import Loading from '../../components/Loading'
+import NoDataFound from '../../components/NoDataFound'
 
 const Groups = ({ navigation }) => {
   const { logout, userToken } = useContext(AuthContext);
   const [data, setData] = useState([]);
   const { getData } = useMakeRequest();
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     console.log('refresh called');
-      getGroups();
-  },[] );
+    getGroups();
+  }, []);
   const getGroups = async () => {
     try {
+      setLoading(true);
       console.log('inside try block')
       let url = `${constant.BASE_URL}/api/staff/groups`;
       console.log('url', url);
-      let headers = { 'access-token' : userToken };
+      let headers = { 'access-token': userToken };
       let res = await getData(url, headers);
       console.log('members res: ', res?.responseData);
       if (res?.responseCode == 200) {
         setData(res?.responseData)
       }
-     
+
       else {
-        showAlert('Error', 'Error occured');
+        showErrorMsg();
       }
     } catch (error) {
       console.log('lsit expense res api error', error);
-      showAlert('Error', 'Error occured');
+      showErrorMsg();
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -42,7 +48,7 @@ const Groups = ({ navigation }) => {
     return (
       <TouchableOpacity
         style={styles.itemContainer}
-        onPress={() => navigation.navigate(navigationStrings.MEMBERS, {group : item.group})}
+        onPress={() => navigation.navigate(navigationStrings.MEMBERS, { group: item.group })}
       >
         <View style={styles.infoContainer}>
           <View style={styles.detailContainer}>
@@ -98,14 +104,21 @@ const Groups = ({ navigation }) => {
             color: 'black',
           },
         ]}
-        notificationCount={3} 
+        notificationCount={3}
       />
       {/* FlatList to render the data */}
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        //keyExtractor={(item) => item.id.toString()}
-      />
+      {loading ? (
+        <Loading />
+      ) : data.length > 0 ? (
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+        // keyExtractor={(item) => {item.MEMBER_ID.toString()}}
+        />
+      ) : (
+        <NoDataFound />
+      )}
+
     </View>
   )
 }
