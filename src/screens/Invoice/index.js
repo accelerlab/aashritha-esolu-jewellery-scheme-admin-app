@@ -13,6 +13,8 @@ import NoDataFound from '../../components/NoDataFound';
 const Invoice = ({ navigation, route }) => {
     const { mem_id } = route.params;
     const { pymt_id } = route.params;
+
+    console.log("paymen id",pymt_id);
     const [data, setData] = useState([]);
     const { userToken } = useContext(AuthContext)
     const { getData } = useMakeRequest();

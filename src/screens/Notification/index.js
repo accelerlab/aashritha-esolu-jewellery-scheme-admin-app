@@ -77,7 +77,7 @@ const Notification = ({navigation}) => {
           setCurrentPage(1);
         }
       }
-    }, [notificationCount]),
+    }, []),
   );
 
   //fetching notification data
@@ -128,10 +128,10 @@ const Notification = ({navigation}) => {
       //read notification
       if (item?.is_read) {
         console.log('read notifcation');
-        navigation.navigate(navigationStrings.INVOICE, {
+        navigation.navigate(navigationStrings.MEMBERS_SINGLE_TRANSACTION, {
           mem_id: item.member_id,
-          pymt_id: item.paymentInfo[0].PYMTITEM_ID,
-        })
+          payment_id: item.payload_data,
+        });
         return;
       }
       console.log('unread notifcation');
@@ -154,8 +154,9 @@ const Notification = ({navigation}) => {
         updatedData[index] = {...updatedData[index], is_read: 1};
         setData(updatedData);
       }
-      navigation.navigate(navigationStrings.ORDER_DETAILS, {
-        id: item?.track_id,
+      navigation.navigate(navigationStrings.MEMBERS_SINGLE_TRANSACTION, {
+        mem_id: item.member_id,
+        payment_id: item.payload_data,
       });
     } catch (error) {
       console.log('notification update status api error', error);
@@ -168,7 +169,9 @@ const Notification = ({navigation}) => {
         style={{
           ...styles.itemContainer,
           //marginBottom: index == lastindex ? tabBarHeight + 5 : 0,
-          backgroundColor: item?.is_read ? 'rgba(215, 189, 226, 0.3)' : colors.lightBlue,
+          backgroundColor: item?.is_read
+            ? 'rgba(215, 189, 226, 0.3)'
+            : colors.lightBlue,
         }}
         onPress={() => handleNotifcation(index, item)}>
         <View style={styles.rowContainer}>

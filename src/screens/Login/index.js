@@ -14,7 +14,7 @@ const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isVisible, setVisible] = useState(true);
-  const [fcmToken, setFcmToken] = useState('');
+  
 
   //push notification logic
   useEffect(() => {
@@ -39,7 +39,7 @@ const Login = ({navigation}) => {
       //     return;
       // }
       //all data is valid calling login function
-      login(username, password, fcmToken);
+      login(username, password);
     } else {
       showAlert('Warning', 'Please fill all the details');
     }

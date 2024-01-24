@@ -8,6 +8,7 @@ import messaging from '@react-native-firebase/messaging';
 import Invoice from '../screens/Invoice';
 import {AuthContext} from '../context/AuthContext';
 import Notification from '../screens/Notification';
+import MemberSingleTransaction from '../screens/MembersSingleTranscation';
 function AppStack() {
   const {getNotificationCount} = useContext(AuthContext);
   useEffect(() => {
@@ -40,6 +41,10 @@ function AppStack() {
       <Stack.Screen
         name={navigationStrings.NOTIFICATION}
         component={Notification}
+      />
+      <Stack.Screen
+        name={navigationStrings.MEMBERS_SINGLE_TRANSACTION}
+        component={MemberSingleTransaction}
       />
     </Stack.Navigator>
   );

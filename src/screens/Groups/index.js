@@ -7,7 +7,7 @@ import {
   Image,
   Alert,
 } from 'react-native';
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import Header from '../../components/Header';
 import styles from './styles';
 import navigationStrings from '../../constants/navigationStrings';
@@ -17,12 +17,18 @@ import constant from '../../constants/constant';
 import {showAlert, showErrorMsg} from '../../utils/Helper';
 import Loading from '../../components/Loading';
 import NoDataFound from '../../components/NoDataFound';
-
+import {useFocusEffect} from '@react-navigation/native';
 const Groups = ({navigation}) => {
-  const {logout, userToken} = useContext(AuthContext);
+  const {logout, userToken, getNotificationCount} = useContext(AuthContext);
   const [data, setData] = useState([]);
   const {getData} = useMakeRequest();
   const [loading, setLoading] = useState(false);
+
+  useFocusEffect(
+    useCallback(() => {
+      getNotificationCount();
+    }, []),
+  );
   useEffect(() => {
     console.log('refresh called');
     getGroups();
@@ -109,7 +115,6 @@ const Groups = ({navigation}) => {
             color: 'black',
           },
         ]}
-        
       />
       {/* FlatList to render the data */}
       {loading ? (
