@@ -52,7 +52,7 @@ const Login = ({navigation}) => {
       <View style={styles.loginContainer}>
         <View style={styles.inputContainer}>
           <Input
-            placeHolder={'Email/Phone'}
+            placeHolder={'Username'}
             value={username}
             onChangeText={val => setUsername(val)}
           />
