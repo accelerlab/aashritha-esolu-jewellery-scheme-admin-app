@@ -7,24 +7,9 @@ import AppStack from './AppStack';
 import colors from '../constants/colors';
 import NavigationService from './NavigationService';
 const Routes = () => {
-  const {isLoading, userToken, getNotificationCount} = useContext(AuthContext);
+  const {isLoading, userToken} = useContext(AuthContext);
 
-  useEffect(() => {
-    const appStateListener = AppState.addEventListener(
-      'change',
-      nextAppState => {
-        console.log('Next AppState is: ', nextAppState);
-        //getting latet version each time app comes  foreground
-        if (nextAppState == 'active') {
-          //fetching notification count when app comes in foregroudn
-          getNotificationCount();
-        }
-      },
-    );
-    return () => {
-      appStateListener?.remove();
-    };
-  }, []);
+  
 
   if (isLoading) {
     return (

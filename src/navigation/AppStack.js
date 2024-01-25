@@ -10,7 +10,6 @@ import {AuthContext} from '../context/AuthContext';
 import Notification from '../screens/Notification';
 import MemberSingleTransaction from '../screens/MembersSingleTranscation';
 function AppStack() {
-  const {getNotificationCount} = useContext(AuthContext);
   useEffect(() => {
     console.log('inside app stack useffect');
     //push notification listeners
@@ -19,13 +18,9 @@ function AppStack() {
     //foreground state
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       console.log('A new FCM message arrived!', JSON.stringify(remoteMessage));
-      getNotificationCount();
-      // onDisplayNotification(remoteMessage)
     });
 
-    //fetching notifcation count
-    console.log('app stack fetching notification count');
-    getNotificationCount();
+   
 
     return unsubscribe;
   }, []);

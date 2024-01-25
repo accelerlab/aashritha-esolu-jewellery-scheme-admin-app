@@ -74,12 +74,12 @@ const MemberSingleTransaction = ({route, navigation}) => {
         showAlert('Success', 'Invoice Generated');
         getPaymentList();
       } else {
-        showAlert('Error', 'Invoice Generation failed');
+        showErrorMsg();
         console.log('response for invoice: ', res);
       }
     } catch (error) {
       console.log('generate invoice res api error', error);
-      showAlert('Error', 'Error occured');
+      showErrorMsg();
     } finally {
       setLoading2(false);
     }

@@ -26,6 +26,7 @@ const Groups = ({navigation}) => {
 
   useFocusEffect(
     useCallback(() => {
+      console.log('fethcing notification count');
       getNotificationCount();
     }, []),
   );
