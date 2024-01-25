@@ -65,7 +65,7 @@ const MemberTransaction = ({route, navigation}) => {
   //createReciept
   const createReciept = async pymtitem_id => {
     try {
-      console.log('generating invoice');
+      console.log('generating Receipt');
       let url = `${constant.BASE_URL}/api/receipt/create?pymtitem_id=${pymtitem_id}`;
       console.log('url', url);
       let headers = {'access-token': userToken};
@@ -77,13 +77,13 @@ const MemberTransaction = ({route, navigation}) => {
       let res = await postData(url, body, headers);
       console.log('payment item id: ', pymtitem_id);
       if (res?.responseCode == 200) {
-        showAlert('Success', 'Invoice Generated');
+        showAlert('Success', 'Receipt Generated');
       } else {
-        showAlert('Error', 'Invoice Generation failed');
-        console.log('response for invoice: ', res);
+        showAlert('Error', 'Receipt Generation failed');
+        console.log('response for Receipt: ', res);
       }
     } catch (error) {
-      console.log('generate invoice res api error', error);
+      console.log('generate Receipt res api error', error);
       showAlert('Error', 'Error occured');
     }
   };
@@ -142,13 +142,13 @@ const MemberTransaction = ({route, navigation}) => {
                 pymt_id: item.paymentInfo[0].PYMTITEM_ID,
               })
             }>
-            <Text style={styles.detailText}>{'View Invoice >'}</Text>
+            <Text style={styles.detailText}>{'View Receipt >'}</Text>
           </TouchableOpacity>
         ) : (
           <TouchableOpacity
             style={{alignSelf: 'center'}}
             onPress={() => createReciept(item.paymentInfo[0].PYMTITEM_ID)}>
-            <Text style={styles.detailText}>{'Generate Invoice >'}</Text>
+            <Text style={styles.detailText}>{'Generate Receipt >'}</Text>
           </TouchableOpacity>
         )}
       </View>
