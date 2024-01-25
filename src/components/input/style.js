@@ -44,7 +44,7 @@ export default StyleSheet.create({
     },
     floatingText: {
         position: 'absolute',
-        left: 15,
+        left: Platform.OS === 'android' ? 15 : 10,
         top: 5,
         fontSize: 9,
         fontFamily: fontFamily.medium,
