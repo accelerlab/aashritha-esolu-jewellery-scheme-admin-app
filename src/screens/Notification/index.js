@@ -70,10 +70,11 @@ const Notification = ({navigation}) => {
       //read notification
       if (item?.is_read) {
         console.log('read notifcation');
-        navigation.navigate(navigationStrings.MEMBERS_SINGLE_TRANSACTION, {
-          mem_id: item.member_id,
-          payment_id: item.payload_data,
-        });
+        if (remoteMessage?.data) {
+          setTimeout(() => {
+            NavigationService.navigate(navigationStrings.NOTIFICATION);
+          }, 1000);
+        }
         return;
       }
       console.log('unread notifcation');

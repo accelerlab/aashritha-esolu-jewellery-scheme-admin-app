@@ -25,6 +25,7 @@ export const AuthProvider = ({children}) => {
       console.log('stored fcm token', fcm_token);
       let body = {username: username, password: password, fcm_token: fcm_token};
       let res = await postData(url, body);
+      console.log('login body', body);
       console.log('login res', res);
       if (res?.responseCode == 200) {
         let data = res?.responseData;

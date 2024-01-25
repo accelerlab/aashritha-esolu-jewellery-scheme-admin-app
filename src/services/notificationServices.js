@@ -93,9 +93,7 @@ const handleNotification = remoteMessage => {
   //navigating after 1 second (giving time to navigation to initialise)
   if (remoteMessage?.data) {
     setTimeout(() => {
-      NavigationService.navigate(navigationStrings.MEMBER_TRANSACTION, {
-        mem_id: 1,
-      });
+      NavigationService.navigate(navigationStrings.NOTIFICATION);
     }, 1000);
   }
   // if (remoteMessage?.data && remoteMessage?.data?.type == 'ProductDetails') {

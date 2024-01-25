@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "1068980964964",
-    "project_id": "jewelleryuserapp",
-    "storage_bucket": "jewelleryuserapp.appspot.com"
+    "project_number": "617396843266",
+    "project_id": "jewelleryapp-20897",
+    "storage_bucket": "jewelleryapp-20897.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1068980964964:android:4e4c2918e8939bf1311971",
+        "mobilesdk_app_id": "1:617396843266:android:dc4ffdc2b3ef15318f081b",
         "android_client_info": {
           "package_name": "com.jewelleryschemeadminapp"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDy3HLspQ18BjSK2Tr4LhLpqXHGVVSHZOw"
+          "current_key": "AIzaSyALAJJofd0laLEXdp-vkboHNVbRH39N0LI"
         }
       ],
       "services": {
@@ -26,7 +26,7 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1068980964964:android:bda9df14fd61776a311971",
+        "mobilesdk_app_id": "1:617396843266:android:cd328b20566c82228f081b",
         "android_client_info": {
           "package_name": "com.jewelleryschemeapp"
         }
@@ -34,7 +34,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDy3HLspQ18BjSK2Tr4LhLpqXHGVVSHZOw"
+          "current_key": "AIzaSyALAJJofd0laLEXdp-vkboHNVbRH39N0LI"
         }
       ],
       "services": {
