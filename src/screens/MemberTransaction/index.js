@@ -25,12 +25,14 @@ import moment from 'moment';
 import Loading from '../../components/Loading';
 import NoDataFound from '../../components/NoDataFound';
 import {ProgressDialog} from 'react-native-simple-dialogs';
+import globalStyle from '../../styles/globalStyle';
 const MemberTransaction = ({route, navigation}) => {
   const {item} = route.params;
   const [data, setData] = useState([]);
   const {userToken} = useContext(AuthContext);
   const {getData, postData} = useMakeRequest();
   const [loading, setLoading] = useState(false);
+  const [loading2, setLoading2] = useState(false);
 
   //fetching payment details
   useEffect(() => {
@@ -65,7 +67,8 @@ const MemberTransaction = ({route, navigation}) => {
   //createReciept
   const createReciept = async pymtitem_id => {
     try {
-      console.log('generating Receipt');
+      setLoading2(true);
+      console.log('generating invoice');
       let url = `${constant.BASE_URL}/api/receipt/create?pymtitem_id=${pymtitem_id}`;
       console.log('url', url);
       let headers = {'access-token': userToken};
@@ -77,14 +80,17 @@ const MemberTransaction = ({route, navigation}) => {
       let res = await postData(url, body, headers);
       console.log('payment item id: ', pymtitem_id);
       if (res?.responseCode == 200) {
-        showAlert('Success', 'Receipt Generated');
+        showAlert('Success', 'Invoice Generated');
+        getPaymentList();
       } else {
-        showAlert('Error', 'Receipt Generation failed');
-        console.log('response for Receipt: ', res);
+        showErrorMsg();
+        console.log('response for invoice: ', res);
       }
     } catch (error) {
-      console.log('generate Receipt res api error', error);
-      showAlert('Error', 'Error occured');
+      console.log('generate invoice res api error', error);
+      showErrorMsg();
+    } finally {
+      setLoading2(false);
     }
   };
 
@@ -157,6 +163,15 @@ const MemberTransaction = ({route, navigation}) => {
   return (
     <View style={styles.container}>
       <Header title={'MEMBER TRANSACTIONS'} showBackButton={true} />
+      <ProgressDialog
+        visible={loading2}
+        title="Creating Receipt"
+        message="Please wait..."
+        titleStyle={globalStyle.loadingTitle}
+        messageStyle={globalStyle.ladingText}
+        activityIndicatorColor={colors.primary}
+        activityIndicatorSize={'large'}
+      />
       <View style={styles.profileContainer}>
         <View style={{marginLeft: 10, flex: 1}}>
           <Text style={{...styles.heading, textTransform: 'capitalize'}}>

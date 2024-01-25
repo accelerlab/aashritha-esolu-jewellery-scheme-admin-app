@@ -25,101 +25,43 @@ import colors from '../../constants/colors';
 import PushNotification from 'react-native-push-notification';
 import Loading from '../../components/Loading';
 import navigationStrings from '../../constants/navigationStrings';
+import {FlashList} from '@shopify/flash-list';
 const Notification = ({navigation}) => {
-  const {userToken, getNotificationCount, notificationCount} =
-    useContext(AuthContext);
+  const {userToken} = useContext(AuthContext);
   //const tabBarHeight = useBottomTabBarHeight();
   const [data, setData] = useState([]);
   const {getData, editData} = useMakeRequest();
-
-  //pagination hooks
-  const [currentPage, setCurrentPage] = useState(1);
   //intial loading
-  const [initialLoading, setInitialLoading] = useState(true);
-  //laod more loading
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
-  const [lastindex, setLastIndex] = useState('');
-  const [noData, setNoData] = useState(false);
-  const flatListRef = useRef(null);
+  const [initialLoading, setInitialLoading] = useState(false);
 
-  const scrollToTop = () => {
-    if (flatListRef.current) {
-      flatListRef.current.scrollToOffset({offset: 0, animated: true});
-    }
-  };
+  //fetching notification data
+  useEffect(() => {
+    getNotificationData();
+  }, []);
 
   // useFocusEffect(
-  //   React.useCallback(() => {
-  //     const unsubscribe = API.subscribe(userId, user => setUser(user));
-
-  //     return () => unsubscribe();
-  //   }, [userId])
+  //   useCallback(() => {
+  //     getNotificationData();
+  //   }, []),
   // );
-  //getting notification count
-  useFocusEffect(
-    useCallback(() => {
-      console.log('inside notfiicatin usefocus effect', notificationCount);
-      console.log('current page no ', currentPage);
-      //new notification arrived refresh flatlist
-      if (notificationCount > 0) {
-        //clearing all notification
-        PushNotification.removeAllDeliveredNotifications();
-        //resetting all hooks
-        setHasMore(true);
-        setNoData(false);
-        scrollToTop();
-        if (currentPage == 1) {
-          //manuall fetching notification
-          console.log('manually fetching data');
-          getNotificationData();
-        } else {
-          setCurrentPage(1);
-        }
-      }
-    }, []),
-  );
 
   //fetching notification data
   const getNotificationData = async () => {
     try {
-      setIsLoading(true);
-      console.log('data left', hasMore);
-      console.log('page no', currentPage);
-      let url = `${constant.BASE_URL}/api/notification/list?page=${currentPage}&limit=10`;
+      setInitialLoading(true);
+      let url = `${constant.BASE_URL}/api/notification/list`;
       console.log('url', url);
       let headers = {'access-token': userToken};
       let res = await getData(url, headers);
       console.log('notification api res', res);
       if (res?.responseCode == 200) {
-        //no data validation
-        if (currentPage == 1 && res?.responseData.length == 0) {
-          setNoData(true);
-        }
-        //initial data
-        else if (currentPage == 1 && res?.responseData.length > 0) {
-          setData(res?.responseData);
-          setLastIndex(res?.responseData.length - 1);
-          //only once we  getting notification unread count
-          getNotificationCount();
-        }
-        //pagination data
-        else if (currentPage > 1 && res?.responseData.length > 0) {
-          setData([...data, ...res?.responseData]);
-          setLastIndex([...data, ...res?.responseData].length - 1);
-        }
-        //no data left in the db
-        else {
-          console.log('setting no data as false');
-          setHasMore(false);
-        }
+        setData(res?.responseData);
       }
     } catch (error) {
       console.log('list notification api error', error);
       showErrorMsg();
     } finally {
-      setIsLoading(false); //load more item loader screen
-      setInitialLoading(false); //first time loading
+      setInitialLoading(false);
     }
   };
 
@@ -182,46 +124,21 @@ const Notification = ({navigation}) => {
       </TouchableOpacity>
     );
   };
-
-  const renderLoader = () => {
-    return isLoading ? (
-      <View style={{marginTop: -75}}>
-        <ActivityIndicator size="large" color={colors.primary} />
-      </View>
-    ) : null;
-  };
-
-  const loadMoreItem = () => {
-    if (hasMore && !isLoading) {
-      setCurrentPage(currentPage + 1);
-    } else {
-      console.log('no more data left in the db');
-    }
-  };
-
-  useEffect(() => {
-    console.log('fetch notification called', currentPage);
-    getNotificationData();
-  }, [currentPage]);
   return (
     <View style={styles.container}>
       <Header title="Notifications" showBackButton={true} />
-
-      {noData && <NoDataFound />}
       {initialLoading ? (
         <Loading />
+      ) : data.length > 0 ? (
+        <FlashList
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={item => item.notification_id}
+          showsVerticalScrollIndicator={false}
+          estimatedItemSize={500}
+        />
       ) : (
-        data.length > 0 && (
-          <FlatList
-            data={data}
-            renderItem={renderItem}
-            keyExtractor={item => item.notification_id}
-            ListFooterComponent={renderLoader}
-            onEndReached={loadMoreItem}
-            showsVerticalScrollIndicator={false}
-            ref={flatListRef}
-          />
-        )
+        <NoDataFound />
       )}
     </View>
   );
