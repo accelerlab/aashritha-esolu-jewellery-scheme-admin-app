@@ -29,6 +29,15 @@ export default StyleSheet.create({
         margin: 10,
         borderRadius: 10
     },
+    statusContainer: {
+        backgroundColor: 'grey', // Customize the background color as needed
+        padding: 5,
+        paddingVertical: 2,
+        alignSelf: 'flex-end',
+        alignItems: 'center',
+        borderRadius: 5,
+        marginBottom: 2,
+      },
     imageStyle: {
         height: 100,
         width: 100,

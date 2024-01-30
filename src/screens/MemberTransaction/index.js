@@ -29,7 +29,7 @@ import globalStyle from '../../styles/globalStyle';
 const MemberTransaction = ({route, navigation}) => {
   const {item} = route.params;
   const [data, setData] = useState([]);
-  const {userToken} = useContext(AuthContext);
+  const {userToken,refreshNotificationList} = useContext(AuthContext);
   const {getData, postData} = useMakeRequest();
   const [loading, setLoading] = useState(false);
   const [loading2, setLoading2] = useState(false);
@@ -81,6 +81,8 @@ const MemberTransaction = ({route, navigation}) => {
       console.log('payment item id: ', pymtitem_id);
       if (res?.responseCode == 200) {
         showAlert('Success', 'Invoice Generated');
+        //refreshing notification list
+        refreshNotificationList.current = true
         getPaymentList();
       } else {
         showErrorMsg();
@@ -101,6 +103,18 @@ const MemberTransaction = ({route, navigation}) => {
           ...styles.itemContainer,
           marginBottom: index == data.length - 1 ? 90 : 20,
         }}>
+        <View
+          style={{
+            ...styles.statusContainer,
+            // backgroundColor:
+            //   item?.status == 0
+            //     ? 'grey'
+            //     : item?.status == 1
+            //     ? 'green'
+            //     : colors.primary,
+          }}>
+          <Text style={styles.statusText}>{item?.MODE}</Text>
+        </View>
         <View style={styles.customerInfoContainer}>
           <Text style={styles.detailText}>
             Payment Id: <Text style={styles.heading}>{item?.PYMT_ID}</Text>

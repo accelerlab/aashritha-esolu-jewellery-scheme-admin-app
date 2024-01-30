@@ -63,10 +63,10 @@ const Invoice = ({ navigation, route }) => {
                         </Text>
                         <Text style={styles.heading}>{moment(data.RCPT_DATE).format('DD/MM/YYYY')}</Text>
                     </View>
-                    <View style={[styles.detailContainer, styles.rowContainer]}>
+                    {/* <View style={[styles.detailContainer, styles.rowContainer]}>
                         <Text style={styles.heading}>Member Id</Text>
                         <Text style={styles.heading}>{data.MEMBER_ID}</Text>
-                    </View>
+                    </View> */}
                     <View style={[styles.detailContainer, styles.rowContainer]}>
                         <Text style={styles.heading}>Receipt Type</Text>
                         <Text style={styles.heading}>{data.TYPE}</Text>

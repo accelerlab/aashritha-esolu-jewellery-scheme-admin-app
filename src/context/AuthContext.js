@@ -1,4 +1,4 @@
-import React, {createContext} from 'react';
+import React, {createContext, useRef} from 'react';
 import {useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import useMakeRequest from '../hooks/useMakeRequest';
@@ -13,6 +13,9 @@ export const AuthProvider = ({children}) => {
   const [userToken, setuserToken] = useState(null);
 
   const [notificationCount, setNotifcationCount] = useState(0);
+
+  //notification refresh list boolean value
+  const refreshNotificationList = useRef(false);
 
   const {postData, getData} = useMakeRequest();
 
@@ -110,7 +113,7 @@ export const AuthProvider = ({children}) => {
       let headers = {'access-token': userToken};
       let res = await getData(url, headers);
       if (res?.responseCode == 200) {
-        console.log('unread notifcation count',res?.responseData?.count);
+        console.log('unread notifcation count', res?.responseData?.count);
         //cart item count
         setNotifcationCount(res?.responseData?.count);
       }
@@ -128,6 +131,7 @@ export const AuthProvider = ({children}) => {
         userToken,
         notificationCount,
         getNotificationCount,
+        refreshNotificationList
       }}>
       {children}
     </AuthContext.Provider>

@@ -27,7 +27,7 @@ import Loading from '../../components/Loading';
 import navigationStrings from '../../constants/navigationStrings';
 import {FlashList} from '@shopify/flash-list';
 const Notification = ({navigation}) => {
-  const {userToken} = useContext(AuthContext);
+  const {userToken, refreshNotificationList} = useContext(AuthContext);
   //const tabBarHeight = useBottomTabBarHeight();
   const [data, setData] = useState([]);
   const {getData, editData} = useMakeRequest();
@@ -39,11 +39,17 @@ const Notification = ({navigation}) => {
     getNotificationData();
   }, []);
 
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     getNotificationData();
-  //   }, []),
-  // );
+  useFocusEffect(
+    useCallback(() => {
+      console.log('insdie call back');
+      //only notifcation list if admin creates the receipt
+      if (refreshNotificationList.current) {
+        console.log('receipt generated refreshing notification screen');
+        getNotificationData();
+        refreshNotificationList.current = false;
+      }
+    }, []),
+  );
 
   //fetching notification data
   const getNotificationData = async () => {
@@ -118,7 +124,9 @@ const Notification = ({navigation}) => {
         onPress={() => handleNotifcation(index, item)}>
         <View style={styles.rowContainer}>
           <Text style={styles.title}>{item?.title}</Text>
-          <Text style={styles.time}>{item?.time}</Text>
+          <Text style={styles.time}>
+            {item?.date} {item?.time}
+          </Text>
         </View>
         <Text style={styles.body}>{item?.message}</Text>
       </TouchableOpacity>

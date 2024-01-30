@@ -23,7 +23,7 @@ import {ProgressDialog} from 'react-native-simple-dialogs';
 const MemberSingleTransaction = ({route, navigation}) => {
   const {mem_id, payment_id} = route.params;
   const [data, setData] = useState('');
-  const {userToken} = useContext(AuthContext);
+  const {userToken,refreshNotificationList} = useContext(AuthContext);
   const {getData, postData} = useMakeRequest();
   const [loading, setLoading] = useState(false);
   const [loading2, setLoading2] = useState(false);
@@ -72,6 +72,8 @@ const MemberSingleTransaction = ({route, navigation}) => {
       console.log('payment item id: ', pymtitem_id);
       if (res?.responseCode == 200) {
         showAlert('Success', 'Receipt Generated');
+        //refreshing notification list
+        refreshNotificationList.current = true;
         getPaymentList();
       } else {
         showErrorMsg();
