@@ -5,6 +5,7 @@ import useMakeRequest from '../hooks/useMakeRequest';
 import constant from '../constants/constant';
 import {showAlert} from '../utils/Helper';
 import messaging from '@react-native-firebase/messaging';
+import NetInfo from "@react-native-community/netinfo";
 
 export const AuthContext = createContext();
 export const AuthProvider = ({children}) => {
@@ -18,6 +19,9 @@ export const AuthProvider = ({children}) => {
   const refreshNotificationList = useRef(false);
 
   const {postData, getData} = useMakeRequest();
+
+  //network connection hooks
+  const [connected, setConnected] = useState(true);
 
   //login method
   const login = async (username, password) => {
@@ -104,6 +108,13 @@ export const AuthProvider = ({children}) => {
 
   useEffect(() => {
     isLoggenIn();
+    //network connection info method
+    // Subscribe
+    const unsubscribe = NetInfo.addEventListener(state => {
+      setConnected(state.isConnected);
+    });
+    //clean up function
+    return () => unsubscribe();
   }, []);
 
   //clean notfication unread count
@@ -130,6 +141,7 @@ export const AuthProvider = ({children}) => {
         isLoading,
         userToken,
         notificationCount,
+        connected,
         getNotificationCount,
         refreshNotificationList
       }}>

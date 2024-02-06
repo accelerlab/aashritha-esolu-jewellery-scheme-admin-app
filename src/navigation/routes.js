@@ -6,8 +6,9 @@ import {AuthContext} from '../context/AuthContext';
 import AppStack from './AppStack';
 import colors from '../constants/colors';
 import NavigationService from './NavigationService';
+import NoInternetModal from '../components/Offline';
 const Routes = () => {
-  const {isLoading, userToken} = useContext(AuthContext);
+  const {isLoading, userToken, connected} = useContext(AuthContext);
 
   
 
@@ -26,6 +27,7 @@ const Routes = () => {
   return (
     <NavigationContainer
       ref={ref => NavigationService.setTopLevelNavigator(ref)}>
+        <NoInternetModal visible={connected ? false : true} />
       {userToken == null ? <AuthStack /> : <AppStack />}
     </NavigationContainer>
   );
